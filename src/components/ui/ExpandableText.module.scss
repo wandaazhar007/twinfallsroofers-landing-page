@@ -1,0 +1,20 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: $tap-min;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: $green-700;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    color: $green-800;
+    text-decoration: underline;
+  }
+}

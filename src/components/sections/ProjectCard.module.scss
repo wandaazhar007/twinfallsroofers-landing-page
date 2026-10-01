@@ -1,0 +1,37 @@
+@use 'variables' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  padding: $space-4;
+}
+
+.title {
+  font-size: 1.8rem;
+}
+
+.meta {
+  color: $ink-muted;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.summary {
+  margin: 0;
+}

@@ -1,0 +1,49 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.intro {
+  padding-block: $space-6;
+  text-align: center;
+}
+
+.lead {
+  font-size: 1.8rem;
+  color: $ink-muted;
+  max-width: 68rem;
+  margin-inline: auto;
+  margin-top: $space-3;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  margin-top: $space-4;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.grid {
+  display: grid;
+  gap: $space-4;
+  grid-template-columns: 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.empty {
+  text-align: center;
+  color: $ink-muted;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.writeReview {
+  text-align: center;
+  margin-top: $space-5;
+}

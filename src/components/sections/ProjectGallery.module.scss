@@ -1,0 +1,51 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  margin-bottom: $space-5;
+
+  @include respond-to(sm) {
+    flex-direction: row;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    font-weight: 600;
+  }
+
+  select {
+    min-height: $tap-min;
+    padding: $space-2 $space-3;
+    font-size: 1.6rem;
+    border: 1px solid $border;
+    border-radius: $radius-sm;
+    background-color: $surface;
+    color: $ink;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: $space-4;
+  grid-template-columns: 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.empty {
+  color: $ink-muted;
+}

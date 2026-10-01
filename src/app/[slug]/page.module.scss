@@ -1,0 +1,76 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.intro {
+  padding-block: $space-6;
+}
+
+.lead {
+  font-size: 1.8rem;
+  color: $ink-muted;
+  max-width: 68rem;
+  margin-top: $space-3;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  margin-top: $space-4;
+
+  @include respond-to(sm) {
+    flex-direction: row;
+  }
+}
+
+.prose {
+  max-width: 76rem;
+  margin-inline: auto;
+
+  h2 {
+    margin-top: $space-7;
+    margin-bottom: $space-3;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  margin-top: $space-5;
+  aspect-ratio: 16 / 9;
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.faqHeading {
+  text-align: center;
+  margin-bottom: $space-6;
+}
+
+.sectionHeading {
+  margin-bottom: $space-5;
+}
+
+.grid {
+  display: grid;
+  gap: $space-4;
+  grid-template-columns: 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,55 @@
+@use 'variables' as *;
+
+.intro {
+  padding-block: $space-6;
+  text-align: center;
+}
+
+.lead {
+  font-size: 1.8rem;
+  color: $ink-muted;
+  max-width: 68rem;
+  margin-inline: auto;
+  margin-top: $space-3;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $space-2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border-radius: $radius-pill;
+  background-color: $surface;
+  border: 1px solid $border;
+  color: $ink;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $green-100;
+  }
+}
+
+.icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: $green-500;
+}
+
+.empty {
+  text-align: center;
+  color: $ink-muted;
+  max-width: 56rem;
+  margin-inline: auto;
+}

@@ -1,0 +1,26 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  gap: $space-2;
+  height: $sticky-bar-height;
+  padding: $space-2 $gutter-mobile;
+  padding-bottom: calc(#{$space-2} + env(safe-area-inset-bottom, 0px));
+  background-color: $surface;
+  border-top: 1px solid $border;
+  box-shadow: $shadow-md;
+
+  @include respond-to(md) {
+    display: none;
+  }
+}
+
+.button {
+  flex: 1;
+}

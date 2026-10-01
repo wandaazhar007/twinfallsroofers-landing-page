@@ -1,0 +1,26 @@
+@use 'variables' as *;
+
+.intro {
+  padding-block: $space-6;
+  text-align: center;
+}
+
+.lead {
+  font-size: 1.8rem;
+  color: $ink-muted;
+  max-width: 68rem;
+  margin-inline: auto;
+  margin-top: $space-3;
+}
+
+.groups {
+  max-width: 76rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $space-7;
+}
+
+.groupHeading {
+  margin-bottom: $space-3;
+}

@@ -1,0 +1,48 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.heading {
+  text-align: center;
+  margin-bottom: $space-6;
+}
+
+.steps {
+  display: grid;
+  gap: $space-5;
+  grid-template-columns: 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.step {
+  text-align: center;
+}
+
+.index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $space-7;
+  height: $space-7;
+  margin-bottom: $space-3;
+  border-radius: 50%;
+  background-color: $green-700;
+  color: $surface;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: $space-2;
+}
+
+.description {
+  color: $ink-muted;
+  margin: 0;
+}

@@ -1,0 +1,30 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.cta {
+  background-color: $green-100;
+  color: $ink;
+  text-align: center;
+
+  h2 {
+    margin-bottom: $space-3;
+  }
+
+  p {
+    color: $ink-muted;
+    max-width: 56rem;
+    margin-inline: auto;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  margin-top: $space-5;
+
+  @include respond-to(sm) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

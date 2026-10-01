@@ -1,0 +1,52 @@
+@use 'variables' as *;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  max-width: 76rem;
+  margin-inline: auto;
+}
+
+.item {
+  background-color: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  padding: $space-3 $space-4;
+
+  &[open] summary {
+    margin-bottom: $space-2;
+  }
+}
+
+.question {
+  cursor: pointer;
+  font-weight: 700;
+  min-height: $tap-min;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.chevron {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  color: $ink-muted;
+  transition: transform 0.2s ease;
+
+  [open] & {
+    transform: rotate(180deg);
+  }
+}
+
+.answer {
+  color: $ink-muted;
+  margin: 0;
+}

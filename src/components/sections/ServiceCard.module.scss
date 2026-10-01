@@ -1,0 +1,41 @@
+@use 'variables' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  padding: $space-4;
+  background-color: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      box-shadow: $shadow-md;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.icon {
+  width: 3.2rem;
+  height: 3.2rem;
+  color: $green-500;
+}
+
+.name {
+  color: $ink;
+  font-size: 2rem;
+}
+
+.description {
+  color: $ink-muted;
+  margin: 0;
+}

@@ -1,0 +1,38 @@
+@use 'variables' as *;
+
+.breadcrumbs {
+  padding-block: $space-3;
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $space-1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1.4rem;
+    color: $ink-muted;
+  }
+
+  li:not(:last-child)::after {
+    content: '/';
+    margin-left: $space-1;
+    color: $ink-muted;
+  }
+
+  a {
+    color: $ink-muted;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus-visible {
+      color: $green-700;
+    }
+  }
+
+  [aria-current='page'] {
+    color: $ink;
+    font-weight: 600;
+  }
+}

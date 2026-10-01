@@ -1,0 +1,50 @@
+// Design tokens. See docs/03-design-system.md. No hardcoded values in components.
+
+// Colors
+$green-500: #34a028; // decorative / large text only (3.38:1 on white)
+$green-700: #2a7a2e; // primary actions (5.35:1 on white)
+$green-800: #1f6b2a; // hover/active
+$green-900: #14421c; // footer / dark sections
+$green-50: #f4f8f1; // page background
+$green-100: #e6f1df; // alternating section background
+$green-200: #d3e7c9; // chips / subtle fill
+
+$ink: #14201a;
+$ink-muted: #4d5b52;
+$surface: #ffffff;
+$border: #d6e3cf;
+$color-focus: #1a73e8;
+$color-success: #1e7a46;
+$color-error: #b3261e;
+$star: #fbbc04; // review stars only (Google style), decorative
+$star-empty: #dadce0; // unfilled review stars
+
+// Spacing scale (rem, 1rem = 10px)
+$space-1: 0.4rem;
+$space-2: 0.8rem;
+$space-3: 1.2rem;
+$space-4: 1.6rem;
+$space-5: 2.4rem;
+$space-6: 3.2rem;
+$space-7: 4.8rem;
+$space-8: 6.4rem;
+$space-9: 9.6rem;
+
+// Layout
+$container-max: 120rem;
+$gutter-mobile: 2.0rem;
+$gutter-desktop: 3.2rem;
+
+// Shape
+$radius-sm: 0.8rem;
+$radius-md: 1.2rem;
+$radius-lg: 2.0rem;
+$radius-pill: 999px;
+
+// Shadows
+$shadow-sm: 0 1px 2px rgba(20, 32, 26, 0.08);
+$shadow-md: 0 4px 12px rgba(20, 32, 26, 0.12);
+
+// Touch targets
+$tap-min: 4.8rem;
+$sticky-bar-height: 7.2rem;

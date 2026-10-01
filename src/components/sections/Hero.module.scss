@@ -1,0 +1,67 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.hero {
+  padding-block: $space-6;
+
+  @include respond-to(lg) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: $space-6;
+    padding-block: $space-8;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.subheadline {
+  font-size: 1.8rem;
+  color: $ink-muted;
+  max-width: 56rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  margin-top: $space-2;
+
+  @include respond-to(sm) {
+    flex-direction: row;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  width: fit-content;
+  padding: $space-1 $space-3;
+  border-radius: $radius-pill;
+  background-color: $green-100;
+  color: $ink;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.imageWrapper {
+  position: relative;
+  margin-top: $space-5;
+  aspect-ratio: 4 / 5;
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  @include respond-to(lg) {
+    margin-top: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  img {
+    object-fit: cover;
+  }
+}

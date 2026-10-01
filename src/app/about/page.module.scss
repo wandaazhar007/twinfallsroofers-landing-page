@@ -1,0 +1,26 @@
+@use 'variables' as *;
+
+.intro {
+  padding-block: $space-6;
+}
+
+.lead {
+  font-size: 1.8rem;
+  color: $ink-muted;
+  max-width: 68rem;
+  margin-top: $space-3;
+}
+
+.prose {
+  max-width: 76rem;
+  margin-inline: auto;
+
+  h2 {
+    margin-top: $space-7;
+    margin-bottom: $space-3;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

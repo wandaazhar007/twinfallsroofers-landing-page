@@ -1,69 +1,45 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { buildMetadata } from '@/lib/seo';
+import { faq } from '@/content/faq';
+import { Hero } from '@/components/sections/Hero';
+import { TrustBar } from '@/components/sections/TrustBar';
+import { ServicesGrid } from '@/components/sections/ServicesGrid';
+import { ReviewsSection } from '@/components/sections/ReviewsSection';
+import { ProcessSteps } from '@/components/sections/ProcessSteps';
+import { AreasList } from '@/components/sections/AreasList';
+import { FaqAccordion } from '@/components/ui/FaqAccordion';
+import { CtaSection } from '@/components/sections/CtaSection';
+import styles from './page.module.scss';
+
+const HOME_FAQ_COUNT = 4;
+
+export const metadata: Metadata = buildMetadata({
+  title: 'Roofing Company in Twin Falls, ID | Canyon Construction Services',
+  description:
+    'Twin Falls roofers for residential and commercial roofing: repair, replacement, and metal roofs. Free estimates. Call (208) 440-4006.',
+  path: '/',
+});
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main>
+      <Hero />
+      <TrustBar />
+      <ServicesGrid />
+      <ReviewsSection />
+      <ProcessSteps />
+      <AreasList />
+      <section className="section">
+        <div className="container">
+          <h2 className={styles.faqHeading}>Frequently Asked Questions</h2>
+          <FaqAccordion items={faq.slice(0, HOME_FAQ_COUNT)} />
+          <p className={styles.faqFooter}>
+            <Link href="/faq/">See all FAQ</Link>
           </p>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+      <CtaSection />
+    </main>
   );
 }

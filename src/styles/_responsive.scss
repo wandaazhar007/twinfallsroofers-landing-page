@@ -1,0 +1,20 @@
+// Mobile-first breakpoints. Media queries use px (rem ignores the 62.5% trick here).
+// See docs/03-design-system.md section 5.
+@use 'sass:map';
+
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);
+
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$breakpoint}`.";
+  }
+}

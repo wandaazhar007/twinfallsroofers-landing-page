@@ -1,0 +1,42 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.intro {
+  padding-block: $space-6;
+}
+
+.lead {
+  font-size: 1.8rem;
+  color: $ink-muted;
+  max-width: 68rem;
+  margin-top: $space-3;
+}
+
+.updated {
+  margin-top: $space-3;
+  color: $ink-muted;
+  font-size: 1.4rem;
+}
+
+.prose {
+  max-width: 76rem;
+  margin-inline: auto;
+
+  h2 {
+    margin-top: $space-7;
+    margin-bottom: $space-3;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  ul {
+    margin: $space-3 0;
+    padding-left: $space-5;
+  }
+
+  li + li {
+    margin-top: $space-2;
+  }
+}

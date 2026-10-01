@@ -1,0 +1,124 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.footer {
+  background-color: $green-900;
+  color: $surface;
+  padding-block: $space-7;
+
+  @include respond-to(lg) {
+    padding-block: $space-9;
+  }
+
+  a {
+    color: $surface;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      color: $green-200;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  gap: $space-6;
+  grid-template-columns: 1fr;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  .social {
+    margin-top: $space-3;
+    flex-direction: row;
+    gap: $space-3;
+  }
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $tap-min;
+  height: $tap-min;
+  border: 1px solid rgba($surface, 0.3);
+  border-radius: 50%;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $green-200;
+  }
+}
+
+.socialIcon {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 9.6rem;
+  height: 9.6rem;
+  margin-bottom: $space-3;
+  border-radius: 50%;
+  background-color: $surface;
+
+  img {
+    width: 7.2rem;
+    height: auto;
+  }
+}
+
+.phone,
+.email {
+  display: inline-flex;
+  align-items: center;
+  min-height: $tap-min;
+}
+
+.phone {
+  font-weight: 700;
+}
+
+.email {
+  overflow-wrap: anywhere;
+}
+
+.businessName {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: $space-2;
+}
+
+.heading {
+  font-weight: 700;
+  margin-bottom: $space-2;
+}
+
+.copyright {
+  margin-top: $space-6;
+  padding-top: $space-4;
+  border-top: 1px solid rgba($surface, 0.15);
+  font-size: 1.4rem;
+  color: rgba($surface, 0.75);
+}

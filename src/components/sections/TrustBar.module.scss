@@ -1,0 +1,62 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.trustBar {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  text-align: center;
+
+  @include respond-to(md) {
+    flex-direction: row;
+    justify-content: center;
+    gap: $space-6;
+  }
+}
+
+.item {
+  font-weight: 600;
+  color: $ink;
+}
+
+.badges {
+  margin-top: $space-6;
+  text-align: center;
+}
+
+.badgesLabel {
+  font-weight: 600;
+  color: $ink-muted;
+  margin-bottom: $space-4;
+}
+
+.badgeList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: $space-6;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.badgeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+  width: 12rem;
+}
+
+.badgeImage {
+  width: auto;
+  height: 8rem;
+  object-fit: contain;
+}
+
+.badgeName {
+  font-size: 1.3rem;
+  color: $ink-muted;
+  text-align: center;
+}

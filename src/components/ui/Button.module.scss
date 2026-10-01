@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  min-height: $tap-min;
+  padding-inline: $space-5;
+  border-radius: $radius-pill;
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.primary,
+.phone {
+  background-color: $green-700;
+  color: $surface;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $green-800;
+    color: $surface;
+  }
+}
+
+.secondary {
+  background-color: transparent;
+  color: $ink;
+  border-color: $ink;
+
+  // A tint of $ink rather than a flat color, so the hover state stays visible
+  // regardless of which section background (white, $green-50, $green-100) it sits on.
+  &:hover,
+  &:focus-visible {
+    background-color: rgba($ink, 0.08);
+    color: $ink;
+  }
+}
