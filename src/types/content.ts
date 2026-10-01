@@ -105,6 +105,12 @@ export type Review = {
   featured: boolean;
 };
 
+export type GalleryImage = ImageAsset & {
+  id: string;
+  width: number;
+  height: number;
+};
+
 export type TeamMember = {
   id: string;
   name: string;

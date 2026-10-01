@@ -9,6 +9,7 @@ import { ReviewsSection } from '@/components/sections/ReviewsSection';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { AreasList } from '@/components/sections/AreasList';
 import { FaqAccordion } from '@/components/ui/FaqAccordion';
+import { GallerySection } from '@/components/sections/GallerySection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import styles from './page.module.scss';
 
@@ -39,6 +40,7 @@ export default function Home() {
           </p>
         </div>
       </section>
+      <GallerySection />
       <CtaSection />
     </main>
   );

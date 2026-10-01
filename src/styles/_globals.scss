@@ -148,6 +148,11 @@ textarea {
   }
 }
 
+// Locks page scroll behind an open modal (e.g. the gallery lightbox).
+html.modal-open {
+  overflow: hidden;
+}
+
 // The mobile nav panel already repeats Call/Free Estimate — hide the duplicate
 // StickyCallBar underneath it while the panel is open. See Header.tsx.
 body.nav-open .sticky-call-bar {

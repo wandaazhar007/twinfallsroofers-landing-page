@@ -1,0 +1,141 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+// Uniform square tiles: every photo is cropped to the same size regardless of its source ratio.
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(7, 1fr);
+    gap: $space-3;
+  }
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: $radius-sm;
+  background-color: $green-100;
+  cursor: zoom-in;
+
+  img {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img,
+  &:focus-visible img {
+    transform: scale(1.05);
+  }
+}
+
+.dialog {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  &::backdrop {
+    background-color: rgba($ink, 0.55);
+    -webkit-backdrop-filter: blur(0.6rem);
+    backdrop-filter: blur(0.6rem);
+  }
+}
+
+// Fills the dialog height; clicks on this empty area close the modal (data-backdrop).
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-3;
+  width: fit-content;
+  max-width: 95vw;
+  margin: auto;
+  min-height: 100%;
+  padding: $space-7 0 $space-4;
+
+  @include respond-to(lg) {
+    max-width: 80vw;
+  }
+}
+
+.fullImage {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 75vh;
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+}
+
+.close,
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $tap-min;
+  height: $tap-min;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: $surface;
+  color: $ink;
+  cursor: pointer;
+  box-shadow: $shadow-sm;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $green-100;
+  }
+
+  svg {
+    flex-shrink: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
+
+.close {
+  position: absolute;
+  top: $space-3;
+  right: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.prevIcon {
+  transform: rotate(90deg);
+}
+
+.nextIcon {
+  transform: rotate(-90deg);
+}
+
+.counter {
+  margin: 0;
+  min-width: 6rem;
+  color: $surface;
+  font-weight: 600;
+  text-align: center;
+}
