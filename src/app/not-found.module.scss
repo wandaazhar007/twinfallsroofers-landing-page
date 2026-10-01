@@ -1,0 +1,65 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 9.6rem;
+  height: 9.6rem;
+  border-radius: 50%;
+  background-color: $green-100;
+  color: $green-700;
+
+  @include respond-to(md) {
+    width: 12rem;
+    height: 12rem;
+  }
+}
+
+.icon {
+  width: 4.8rem;
+  height: 4.8rem;
+
+  @include respond-to(md) {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+.code {
+  margin: $space-4 0 0;
+  color: $green-500;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: 7.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+
+  @include respond-to(md) {
+    font-size: 9.6rem;
+  }
+}
+
+.heading {
+  margin-top: $space-3;
+}
+
+.lead {
+  max-width: 52rem;
+  margin: $space-4 0 0;
+  color: $ink-muted;
+  font-size: 1.8rem;
+}
+
+.hint {
+  margin: $space-3 0 0;
+  color: $ink-muted;
+}

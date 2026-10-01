@@ -22,6 +22,7 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.siteUrl),
   title: 'Canyon Construction Services',
   description: 'Roofing contractor in Twin Falls, Idaho.',
 };

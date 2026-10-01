@@ -1,0 +1,61 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.heading {
+  text-align: center;
+  margin-bottom: $space-6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-4;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-5;
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  overflow: hidden;
+  background-color: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  text-align: center;
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+
+  img {
+    object-fit: cover;
+    object-position: center 20%;
+  }
+}
+
+.info {
+  padding: $space-3 $space-2;
+}
+
+.name {
+  margin: 0;
+  color: $ink;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.role {
+  margin: $space-1 0 0;
+  color: $ink-muted;
+  font-size: 1.4rem;
+}

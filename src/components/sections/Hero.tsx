@@ -18,6 +18,9 @@ export function Hero() {
 
         {site.rating ? (
           <span className={styles.badge}>
+            <span className={styles.stars} aria-hidden="true">
+              ★★★★★
+            </span>
             {site.rating.value.toFixed(1)} stars on Google ({site.rating.count} reviews)
           </span>
         ) : null}
@@ -32,8 +35,8 @@ export function Hero() {
 
       <div className={styles.imageWrapper}>
         <Image
-          src="/images/completed-shingle-roof-installation.jpg"
-          alt="Completed asphalt shingle roof installation"
+          src="/images/metal-roof-installation.jpg"
+          alt="Roofer in a safety harness installing metal roofing panels"
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
           priority

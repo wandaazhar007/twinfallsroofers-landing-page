@@ -5,8 +5,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: $surface;
-  border-bottom: 1px solid $border;
+  background-color: $green-50; // same as the page/hero background
 }
 
 .inner {
@@ -18,15 +17,17 @@
 }
 
 .logoLink {
-  display: block;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
+  min-height: $tap-min;
 
   img {
-    width: 11rem;
+    width: 7.7rem;
     height: auto;
 
     @include respond-to(md) {
-      width: 17rem;
+      width: 11.9rem;
     }
   }
 }
@@ -80,6 +81,13 @@
   color: $ink;
   cursor: pointer;
 
+  // Explicit size: Safari collapses a viewBox-only SVG to 0 width inside a flex container.
+  svg {
+    flex-shrink: 0;
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
   @include respond-to(lg) {
     display: none;
   }
@@ -111,7 +119,8 @@
     gap: $space-2;
   }
 
-  a {
+  // Nav links only — scoped to the list so it doesn't override the Call/Estimate button colors.
+  ul a {
     display: flex;
     align-items: center;
     min-height: $tap-min;

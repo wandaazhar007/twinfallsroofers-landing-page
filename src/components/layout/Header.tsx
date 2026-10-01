@@ -73,8 +73,17 @@ export function Header() {
             </ul>
           </nav>
           <div className={styles.mobileActions}>
-            <PhoneLink location="header" className={styles.mobileActionButton} />
-            <Button href="/contact/" variant="secondary" className={styles.mobileActionButton}>
+            <PhoneLink
+              location="header"
+              className={styles.mobileActionButton}
+              onClick={() => setIsMenuOpen(false)}
+            />
+            <Button
+              href="/contact/"
+              variant="secondary"
+              className={styles.mobileActionButton}
+              onClick={() => setIsMenuOpen(false)}
+            >
               Free Estimate
             </Button>
           </div>

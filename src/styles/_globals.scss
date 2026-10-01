@@ -2,7 +2,11 @@
 @use 'responsive' as *;
 
 html {
-  font-size: 62.5%; // 1rem = 10px
+  font-size: 52.5%; // mobile & tablet: 1rem = 8.4px (client request, 2026-10-01)
+
+  @include respond-to(lg) {
+    font-size: 62.5%; // desktop: 1rem = 10px
+  }
 }
 
 *,
@@ -151,6 +155,7 @@ body.nav-open .sticky-call-bar {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

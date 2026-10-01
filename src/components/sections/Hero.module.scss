@@ -7,7 +7,8 @@
   @include respond-to(lg) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
+    // stretch: the image column takes the text column's height (headline top to buttons bottom)
+    align-items: stretch;
     gap: $space-6;
     padding-block: $space-8;
   }
@@ -49,6 +50,13 @@
   font-size: 1.4rem;
 }
 
+.stars {
+  color: $star;
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  line-height: 1;
+}
+
 .imageWrapper {
   position: relative;
   margin-top: $space-5;
@@ -58,7 +66,7 @@
 
   @include respond-to(lg) {
     margin-top: 0;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: auto;
   }
 
   img {

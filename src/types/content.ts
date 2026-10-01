@@ -105,6 +105,13 @@ export type Review = {
   featured: boolean;
 };
 
+export type TeamMember = {
+  id: string;
+  name: string;
+  role: string | null;
+  photo: ImageAsset;
+};
+
 export type ProjectImage = {
   src: string;
   alt: string;

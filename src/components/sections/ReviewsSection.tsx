@@ -20,6 +20,9 @@ export function ReviewsSection() {
         <h2 className={styles.heading}>What Twin Falls Homeowners Say</h2>
         {site.rating ? (
           <p className={styles.rating}>
+            <span className={styles.stars} aria-hidden="true">
+              ★★★★★
+            </span>
             {site.rating.value.toFixed(1)} stars on Google ({site.rating.count} reviews)
           </p>
         ) : null}

@@ -11,9 +11,21 @@
 }
 
 .rating {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
   color: $ink-muted;
   font-weight: 700;
   margin: 0;
+}
+
+.stars {
+  color: $star;
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+  line-height: 1;
 }
 
 .list {
