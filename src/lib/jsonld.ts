@@ -1,5 +1,6 @@
 import { site } from '@/content/site';
 import { areas } from '@/content/areas';
+import { DEFAULT_OG_IMAGE } from '@/lib/seo';
 import type { FaqItem, Service } from '@/types/content';
 
 // JSON-LD builders. Rendered server-side through the <JsonLd /> component (Fase 2).
@@ -118,16 +119,47 @@ export type BlogPostingInput = {
 };
 
 export function buildBlogPostingJsonLd(post: BlogPostingInput): JsonLdObject {
-  const jsonLd: JsonLdObject = {
+  const url = absoluteUrl(post.path);
+  return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
-    url: absoluteUrl(post.path),
+    url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     datePublished: post.datePublished,
-    author: { '@type': 'Organization', name: post.author },
+    dateModified: post.dateModified ?? post.datePublished,
+    author: { '@type': 'Organization', name: post.author, url: site.siteUrl },
+    publisher: {
+      '@type': 'Organization',
+      name: site.businessName,
+      logo: { '@type': 'ImageObject', url: absoluteUrl(site.logo.src) },
+    },
+    image: absoluteUrl(post.image?.src ?? DEFAULT_OG_IMAGE.src),
+    inLanguage: 'en-US',
   };
-  if (post.dateModified) jsonLd.dateModified = post.dateModified;
-  if (post.image) jsonLd.image = absoluteUrl(post.image.src);
-  return jsonLd;
+}
+
+export type BlogListingInput = {
+  name: string;
+  description: string;
+  path: string;
+  posts: { title: string; path: string; datePublished: string }[];
+};
+
+export function buildBlogJsonLd(blog: BlogListingInput): JsonLdObject {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: blog.name,
+    description: blog.description,
+    url: absoluteUrl(blog.path),
+    publisher: { '@type': 'Organization', name: site.businessName, url: site.siteUrl },
+    blogPost: blog.posts.map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      url: absoluteUrl(post.path),
+      datePublished: post.datePublished,
+    })),
+  };
 }

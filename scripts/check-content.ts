@@ -66,6 +66,7 @@ async function loadContentModule<T>(filename: string): Promise<T | null> {
 
 type ServiceLike = {
   slug: string;
+  relatedPosts?: string[];
   title: string;
   metaDescription: string;
   h1: string;
@@ -99,6 +100,13 @@ async function checkServices(): Promise<void> {
       fail(`services.ts (${service.slug}): metaDescription longer than ${META_MAX} chars`);
     }
     checkImage(`services.ts (${service.slug}).heroImage`, service.heroImage);
+    for (const postSlug of service.relatedPosts ?? []) {
+      if (!existsSync(join(BLOG_DIR, `${postSlug}.mdx`))) {
+        fail(
+          `services.ts (${service.slug}): relatedPosts "${postSlug}" has no blog/${postSlug}.mdx`,
+        );
+      }
+    }
     walkStrings(`services.ts (${service.slug})`, service);
   }
 }
@@ -132,6 +140,8 @@ async function checkReviews(): Promise<void> {
 
 async function checkBlogPosts(): Promise<void> {
   if (!existsSync(BLOG_DIR)) return;
+  const services = (await loadContentModule<ServiceLike[]>('services')) ?? [];
+  const serviceSlugs = new Set(services.map((service) => service.slug));
   const files = readdirSync(BLOG_DIR).filter((file) => file.endsWith('.mdx'));
   for (const file of files) {
     const raw = readFileSync(join(BLOG_DIR, file), 'utf-8');
@@ -145,6 +155,22 @@ async function checkBlogPosts(): Promise<void> {
     if (typeof data.description === 'string' && data.description.length > META_MAX) {
       fail(`blog/${file}: description longer than ${META_MAX} chars`);
     }
+    const seoTitle: unknown = data.metaTitle ?? data.title;
+    if (typeof seoTitle === 'string' && seoTitle.length > TITLE_MAX) {
+      fail(`blog/${file}: title tag longer than ${TITLE_MAX} chars (add a shorter metaTitle)`);
+    }
+    const relatedServices: unknown = data.relatedServices;
+    if (!Array.isArray(relatedServices) || relatedServices.length === 0) {
+      fail(`blog/${file}: relatedServices must list at least 1 service`);
+    } else {
+      for (const slug of relatedServices) {
+        if (!serviceSlugs.has(String(slug))) {
+          fail(`blog/${file}: relatedServices "${String(slug)}" is not in services.ts`);
+        }
+      }
+    }
+    checkImage(`blog/${file}.image`, data.image as { src?: string; alt?: string } | undefined);
+    walkStrings(`blog/${file} frontmatter`, data);
     checkForbiddenText(`blog/${file} content`, content);
   }
 }

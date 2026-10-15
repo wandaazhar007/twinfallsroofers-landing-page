@@ -1,0 +1,73 @@
+@use 'variables' as *;
+
+// The whole card is clickable through the title link's ::after overlay, so there is
+// a single focusable link per card with the article title as its accessible name.
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus-within {
+      box-shadow: $shadow-md;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-color: $green-100;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  padding: $space-4;
+}
+
+.date {
+  font-size: 1.4rem;
+  color: $ink-muted;
+}
+
+.title {
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+.link {
+  color: $ink;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $green-800;
+  }
+}
+
+.description {
+  color: $ink-muted;
+  margin: 0;
+}

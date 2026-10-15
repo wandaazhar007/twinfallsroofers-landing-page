@@ -4,12 +4,15 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
+import { MdxLink } from '@/components/ui/MdxLink';
 import type { ImageAsset } from '@/types/content';
 
 const BLOG_DIR = join(process.cwd(), 'src', 'content', 'blog');
 
 export type BlogFrontmatter = {
   title: string;
+  // Shorter <title> tag when the article headline is too long for search results (≤ 70 chars).
+  metaTitle?: string | null;
   description: string;
   date: string;
   updated: string | null;
@@ -38,6 +41,18 @@ export function getAllBlogPosts(): BlogPostSummary[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
+// Other posts that share a related service with this one, newest first.
+export function getRelatedBlogPosts(
+  slug: string,
+  relatedServices: string[],
+  limit = 3,
+): BlogPostSummary[] {
+  return getAllBlogPosts()
+    .filter((post) => post.slug !== slug)
+    .filter((post) => post.relatedServices.some((service) => relatedServices.includes(service)))
+    .slice(0, limit);
+}
+
 // Lightweight lookup (frontmatter only, no MDX compile) for link labels elsewhere on the
 // site — e.g. a service page linking to a related post before the full article exists.
 export function getBlogFrontmatterBySlug(slug: string): BlogFrontmatter | null {
@@ -57,6 +72,7 @@ export async function getBlogPost(slug: string) {
   const { content, frontmatter } = await compileMDX<BlogFrontmatter>({
     source: raw,
     options: { parseFrontmatter: true },
+    components: { a: MdxLink },
   });
 
   return { slug, content, frontmatter };

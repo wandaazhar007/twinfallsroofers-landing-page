@@ -1,0 +1,45 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.header {
+  padding-block: $space-5 $space-6;
+}
+
+.column {
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.title {
+  font-size: 3.2rem;
+
+  @include respond-to(lg) {
+    font-size: 4.4rem;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-1 $space-4;
+  margin: $space-4 0 0;
+  font-size: 1.4rem;
+  color: $ink-muted;
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin-top: $space-5;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background-color: $green-100;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.content {
+  padding-bottom: $space-8;
+}

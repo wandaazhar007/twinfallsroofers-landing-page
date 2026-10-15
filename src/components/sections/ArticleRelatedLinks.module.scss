@@ -1,0 +1,70 @@
+@use 'variables' as *;
+@use 'responsive' as *;
+
+.heading {
+  margin-bottom: $space-5;
+}
+
+.serviceList {
+  display: grid;
+  gap: $space-4;
+  grid-template-columns: 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.serviceLink {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  min-height: $tap-min;
+  height: 100%;
+  padding: $space-4;
+  background-color: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease;
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      box-shadow: $shadow-md;
+    }
+  }
+}
+
+.serviceName {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $green-700;
+}
+
+.serviceDescription {
+  color: $ink-muted;
+}
+
+.more {
+  margin: $space-5 0 0;
+}
+
+.postGrid {
+  display: grid;
+  gap: $space-4;
+  grid-template-columns: 1fr;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -7,11 +7,16 @@ type BuildMetadataInput = {
   description: string;
   path: string;
   image?: ImageAsset;
+  article?: {
+    publishedTime: string;
+    modifiedTime?: string | null;
+    author: string;
+  };
 };
 
 // Shared social preview image (1200x630, cropped from the home hero photo). Used when a page
 // doesn't pass its own image, so every page has og:image and twitter:image.
-const DEFAULT_OG_IMAGE = {
+export const DEFAULT_OG_IMAGE = {
   src: '/images/og-default.jpg',
   alt: 'Completed asphalt shingle roof installation',
   width: 1200,
@@ -20,18 +25,34 @@ const DEFAULT_OG_IMAGE = {
 
 // Single helper for page metadata: canonical URL, Open Graph, and Twitter card.
 // Pages should call this instead of constructing Metadata objects by hand.
-export function buildMetadata({ title, description, path, image }: BuildMetadataInput): Metadata {
+export function buildMetadata({
+  title,
+  description,
+  path,
+  image,
+  article,
+}: BuildMetadataInput): Metadata {
   const url = new URL(path, site.siteUrl).toString();
   const ogImage = image ?? DEFAULT_OG_IMAGE;
   const ogImageUrl = new URL(ogImage.src, site.siteUrl).toString();
-  const ogImageSize = image ? {} : { width: DEFAULT_OG_IMAGE.width, height: DEFAULT_OG_IMAGE.height };
+  const ogImageSize = image
+    ? {}
+    : { width: DEFAULT_OG_IMAGE.width, height: DEFAULT_OG_IMAGE.height };
+  const ogType = article
+    ? {
+        type: 'article' as const,
+        publishedTime: article.publishedTime,
+        modifiedTime: article.modifiedTime ?? article.publishedTime,
+        authors: [article.author],
+      }
+    : { type: 'website' as const };
 
   return {
     title,
     description,
     alternates: { canonical: url },
     openGraph: {
-      type: 'website',
+      ...ogType,
       locale: 'en_US',
       url,
       title,
