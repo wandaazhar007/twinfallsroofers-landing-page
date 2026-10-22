@@ -86,7 +86,7 @@ Content rules: never publish unconfirmed business facts (license numbers, years 
 
 ## Deployment
 
-The app runs with `next start` under PM2 (`ecosystem.config.cjs`, port 3000) behind Nginx on a DigitalOcean droplet. Do not use `output: 'export'`: the site relies on `next/image` optimization and `redirects()`.
+The app runs with `next start` under PM2 (`ecosystem.config.cjs`, port 3008) behind Nginx on a DigitalOcean droplet. Do not use `output: 'export'`: the site relies on `next/image` optimization and `redirects()`.
 
 ## Status
 

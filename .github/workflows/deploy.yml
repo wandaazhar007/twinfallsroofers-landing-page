@@ -89,4 +89,4 @@ jobs:
           SSH_HOST: ${{ secrets.DO_HOST }}
         run: |
           ssh -i ~/.ssh/deploy_key "$SSH_USER@$SSH_HOST" \
-            "curl -fsS --retry 6 --retry-delay 3 --retry-connrefused -o /dev/null http://127.0.0.1:3000/ && echo 'App is up on 127.0.0.1:3000'"
+            "curl -fsS --retry 6 --retry-delay 3 --retry-connrefused -o /dev/null http://127.0.0.1:3008/ && echo 'App is up on 127.0.0.1:3008'"
