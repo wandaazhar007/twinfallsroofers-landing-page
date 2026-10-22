@@ -18,7 +18,8 @@ export const site: SiteContent = {
     postalCode: '83301',
     addressCountry: 'US',
   },
-  geo: null,
+  // Pin of the Google Business Profile listing, from the Maps link on the old site.
+  geo: { latitude: 42.5628673, longitude: -114.4550732 },
   openingHours: {
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     opens: '07:00',

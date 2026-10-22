@@ -35,16 +35,17 @@ If `NEXT_PUBLIC_FORM_ENDPOINT` is empty, the estimate form runs in a **preview m
 
 ## Scripts
 
-| Command                 | Description                                                                                    |
-| ----------------------- | ---------------------------------------------------------------------------------------------- |
-| `npm run dev`           | Start the development server                                                                   |
-| `npm run lint`          | ESLint                                                                                         |
-| `npm run typecheck`     | TypeScript check (`tsc --noEmit`)                                                              |
-| `npm run check:content` | Validate content: no placeholder leaks, title/meta length limits, required fields, image files |
-| `npm run build`         | Production build                                                                               |
-| `npm run start`         | Serve the production build                                                                     |
+| Command                   | Description                                                                                    |
+| ------------------------- | ---------------------------------------------------------------------------------------------- |
+| `npm run dev`             | Start the development server                                                                   |
+| `npm run lint`            | ESLint                                                                                         |
+| `npm run typecheck`       | TypeScript check (`tsc --noEmit`)                                                              |
+| `npm run check:content`   | Validate content: no placeholder leaks, title/meta length limits, required fields, image files |
+| `npm run check:redirects` | Validate `redirects.mjs`: every destination exists in the sitemap, no chains or duplicates     |
+| `npm run build`           | Production build                                                                               |
+| `npm run start`           | Serve the production build                                                                     |
 
-Before committing, `lint`, `typecheck`, `check:content`, and `build` should all pass.
+Before committing, `lint`, `typecheck`, `check:content`, `check:redirects`, and `build` should all pass.
 
 ## Project structure
 
