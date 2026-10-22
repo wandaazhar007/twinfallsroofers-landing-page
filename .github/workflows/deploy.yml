@@ -53,6 +53,9 @@ jobs:
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+          # Keep the connection alive during long silent steps such as `npm ci` on the droplet.
+          printf 'Host *\n  ServerAliveInterval 30\n  ServerAliveCountMax 20\n  ConnectTimeout 20\n' >> ~/.ssh/config
+          chmod 600 ~/.ssh/config
 
       # -R keeps relative paths (src/content/blog stays under src/). --delete only prunes inside the
       # directories listed here (.next, public, src/content/blog), never other files in DO_APP_PATH.
@@ -78,7 +81,7 @@ jobs:
           APP_PATH: ${{ vars.DO_APP_PATH }}
         run: |
           ssh -i ~/.ssh/deploy_key "$SSH_USER@$SSH_HOST" \
-            "cd '$APP_PATH' && npm ci --omit=dev && pm2 startOrReload ecosystem.config.cjs --update-env && pm2 save"
+            "cd '$APP_PATH' && npm ci --omit=dev --no-audit --no-fund --loglevel=http && pm2 startOrReload ecosystem.config.cjs --update-env && pm2 save"
 
       - name: Health check
         env:
