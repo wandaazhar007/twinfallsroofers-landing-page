@@ -5,10 +5,9 @@ import { services } from '@/content/services';
 import { areas } from '@/content/areas';
 import { footerNavigation } from '@/content/navigation';
 import { isNavigationFlagReady } from '@/lib/navigation';
-import { FacebookIcon } from '@/components/ui/icons/FacebookIcon';
-import { InstagramIcon } from '@/components/ui/icons/InstagramIcon';
 import { PhoneTextLink } from '@/components/ui/PhoneTextLink';
 import { FooterContactIcons } from './FooterContactIcons';
+import { FooterSocialIcons } from './FooterSocialIcons';
 import styles from './Footer.module.scss';
 
 export function Footer() {
@@ -84,34 +83,10 @@ export function Footer() {
                 linkClassName={styles.socialLink}
                 iconClassName={styles.socialIcon}
               />
-              {site.social.facebook ? (
-                <li>
-                  <a
-                    href={site.social.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialLink}
-                    aria-label="Facebook (opens in a new tab)"
-                    title="Facebook"
-                  >
-                    <FacebookIcon className={styles.socialIcon} />
-                  </a>
-                </li>
-              ) : null}
-              {site.social.instagram ? (
-                <li>
-                  <a
-                    href={site.social.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.socialLink}
-                    aria-label="Instagram (opens in a new tab)"
-                    title="Instagram"
-                  >
-                    <InstagramIcon className={styles.socialIcon} />
-                  </a>
-                </li>
-              ) : null}
+              <FooterSocialIcons
+                linkClassName={styles.socialLink}
+                iconClassName={styles.socialIcon}
+              />
             </ul>
           </div>
         </div>

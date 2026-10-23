@@ -29,3 +29,11 @@ export function trackDirectionsClick(): void {
 export function trackReviewCtaClick(): void {
   pushEvent('review_cta_click');
 }
+
+export function trackFacebookClick(): void {
+  pushEvent('facebook_click');
+}
+
+export function trackInstagramClick(): void {
+  pushEvent('instagram_click');
+}
