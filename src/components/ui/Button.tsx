@@ -10,6 +10,8 @@ type Props = {
   variant?: Variant;
   type?: 'button' | 'submit';
   onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
+  /** External links only: opens in a new tab with rel="noopener noreferrer". */
+  newTab?: boolean;
   className?: string;
   children: ReactNode;
   'aria-label'?: string;
@@ -19,7 +21,16 @@ function joinClassNames(...values: Array<string | undefined | false>): string {
   return values.filter(Boolean).join(' ');
 }
 
-export function Button({ href, variant = 'primary', type = 'button', onClick, className, children, ...rest }: Props) {
+export function Button({
+  href,
+  variant = 'primary',
+  type = 'button',
+  onClick,
+  newTab = false,
+  className,
+  children,
+  ...rest
+}: Props) {
   const classes = joinClassNames(styles.button, styles[variant], className);
 
   if (href) {
@@ -34,7 +45,13 @@ export function Button({ href, variant = 'primary', type = 'button', onClick, cl
     }
 
     return (
-      <a href={href} className={classes} onClick={onClick} {...rest}>
+      <a
+        href={href}
+        className={classes}
+        onClick={onClick}
+        {...(newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        {...rest}
+      >
         {children}
       </a>
     );

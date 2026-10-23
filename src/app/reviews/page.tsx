@@ -4,7 +4,7 @@ import { reviews } from '@/content/reviews';
 import { buildMetadata } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { ReviewCard, REVIEW_TEXT_MAX_LENGTH } from '@/components/sections/ReviewCard';
-import { Button } from '@/components/ui/Button';
+import { ReviewCtaLink } from '@/components/ui/ReviewCtaLink';
 import styles from './page.module.scss';
 
 export const metadata: Metadata = buildMetadata({
@@ -36,9 +36,7 @@ export default function ReviewsPage() {
 
         {site.googleReviewUrl ? (
           <p className={styles.writeReview}>
-            <Button href={site.googleReviewUrl} variant="secondary">
-              Write a Review
-            </Button>
+            <ReviewCtaLink href={site.googleReviewUrl} />
           </p>
         ) : null}
       </section>

@@ -27,7 +27,7 @@ export const site: SiteContent = {
   },
   rating: { value: 4.9, count: 39 }, // docs/01 — update at launch with current GBP values
   googleBusinessProfileUrl: 'https://www.google.com/maps?cid=10373575491058787339', // docs/06 #11
-  googleReviewUrl: null, // docs/06 #11
+  googleReviewUrl: 'https://g.page/r/CQvkQZPyV_aPEAE/review', // docs/06 #11
   social: {
     facebook: 'https://www.facebook.com/roofspecialist',
     instagram: 'https://www.instagram.com/canyon_construction_services/',
